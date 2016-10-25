@@ -15,15 +15,24 @@ class PaymentMethod(models.Model):
 
 
 class Rating(models.Model):
-    value = models.IntegerField()
+    LIKE = 1
+    DISLIKE = -1
+    CHOICES = (
+        (LIKE, 'LIKE'),
+        (DISLIKE, 'DISLIKE'),
+    )
+
+    value = models.IntegerField(choices=CHOICES)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField()
+    date = models.DateTimeField()
 
 
 class Comment(models.Model):
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField()
-    comment = models.TextField()
+    date = models.DateTimeField()
+    text = models.TextField()
 
 
 class Product(models.Model):

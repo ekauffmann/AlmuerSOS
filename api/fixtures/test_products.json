@@ -1,0 +1,50 @@
+[
+    {
+        "model": "api.product",
+        "pk": 1,
+        "fields": {
+            "name": "Lunchbox",
+            "store": 1
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 2,
+        "fields": {
+            "name": "Gohan",
+            "store": 1
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 3,
+        "fields": {
+            "name": "Ensalada",
+            "store": 1
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 4,
+        "fields": {
+            "name": "Vegetariano",
+            "store": 1
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 5,
+        "fields": {
+            "name": "Mongoliana",
+            "store": 2
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 6,
+        "fields": {
+            "name": "Chaumín",
+            "store": 2
+        }
+    }
+]

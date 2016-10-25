@@ -1,0 +1,22 @@
+[
+    {
+        "model": "api.rating",
+        "pk": 1,
+        "fields": {
+            "value": 1,
+            "store": 1,
+            "user" : 1,
+            "date": "2016-05-16T04:00:01Z"
+        }
+    },
+    {
+        "model": "api.rating",
+        "pk": 2,
+        "fields": {
+            "value": -1,
+            "store": 2,
+            "user" : 1,
+            "date": "2016-05-16T04:00:01Z"
+        }
+    }
+]

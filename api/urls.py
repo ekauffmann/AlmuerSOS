@@ -14,10 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
-from django.contrib import admin
+from rest_framework_nested import routers
+
+from .views import CommentViewSet, ProductViewSet, RatingViewSet, StoreViewSet
+
+
+router = routers.SimpleRouter()
+
+router.register(r'stores', StoreViewSet, 'Store')
+stores_router = routers.NestedSimpleRouter(router, r'stores', lookup='store')
+stores_router.register(r'products', ProductViewSet, 'Product')
+stores_router.register(r'ratings', RatingViewSet, 'Rating')
+stores_router.register(r'comments', CommentViewSet, 'Comment')
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^', include('api.urls', namespace='api')),
+    url(r'^0/', include(router.urls)),
+    url(r'^0/', include(stores_router.urls)),
 ]

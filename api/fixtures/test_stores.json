@@ -1,0 +1,24 @@
+[
+    {
+        "model": "api.store",
+        "pk": 1,
+        "fields": {
+            "name": "Lunchbox Factory",
+            "phone": "+56949007852",
+            "managers": [],
+            "payment_methods": [],
+            "description": "¡Lunchbox, Gohan y Ensaladaaaas!"
+        }
+    },
+    {
+        "model": "api.store",
+        "pk": 2,
+        "fields": {
+            "name": "Chino",
+            "phone": "+56912345678",
+            "managers": [],
+            "payment_methods": [],
+            "description": "Chinchulancha"
+        }
+    }
+]

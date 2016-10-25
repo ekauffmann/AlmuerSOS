@@ -1,0 +1,22 @@
+[
+    {
+        "model": "api.comment",
+        "pk": 1,
+        "fields": {
+            "text": "Bestest :D",
+            "store": 1,
+            "user" : 1,
+            "date": "2016-05-16T04:00:01Z"
+        }
+    },
+    {
+        "model": "api.comment",
+        "pk": 2,
+        "fields": {
+            "text": "Ñe",
+            "store": 2,
+            "user" : 1,
+            "date": "2016-05-16T04:00:01Z"
+        }
+    }
+]
