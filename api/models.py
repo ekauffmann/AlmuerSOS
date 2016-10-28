@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -45,3 +47,11 @@ class ServiceDay(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     price = models.IntegerField()
     supply = models.IntegerField()
+
+
+# sum of reservations must be leq than supply
+class Reservation(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    service_day = models.ForeignKey(ServiceDay, on_delete=models.CASCADE)
+    demand = models.IntegerField()

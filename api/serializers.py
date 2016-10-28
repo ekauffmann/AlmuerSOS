@@ -21,6 +21,12 @@ class RatingSerializer(serializers.ModelSerializer):
         fields = ('id', 'value', 'store', 'user', 'date',)
 
 
+class ReservationSerializer(serializers.Serializer):
+    date = serializers.DateField()
+    product = ProductSerializer()
+    supply = serializers.IntegerField()
+
+
 class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store

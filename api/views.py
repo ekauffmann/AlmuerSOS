@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from .models import Comment, Product, Rating, Store
-from .serializers import CommentSerializer, ProductSerializer, RatingSerializer, StoreSerializer
+from .models import Comment, Product, Rating, Reservation, Store
+from .serializers import CommentSerializer, ProductSerializer, RatingSerializer, ReservationSerializer, StoreSerializer
 
 
 class CommentViewSet(viewsets.ModelViewSet):
@@ -50,6 +50,13 @@ class RatingViewSet(viewsets.ModelViewSet):
             params['pk'] = rating_id
 
         return Rating.objects.filter(**params)
+
+
+class ReservationViewSet(viewsets.ModelViewSet):
+    serializer_class = ReservationSerializer
+
+    def get_queryset(self):
+        return Reservation.objects.none()
 
 
 class StoreViewSet(viewsets.ReadOnlyModelViewSet):

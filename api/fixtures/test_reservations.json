@@ -1,0 +1,11 @@
+[
+    {
+        "model": "api.reservation",
+        "pk": "418d63f2-8921-4a36-a3f3-9cac6adb73c6",
+        "fields": {
+            "user": 1,
+            "service_day": 1,
+            "demand": 1
+        }
+    }
+]
