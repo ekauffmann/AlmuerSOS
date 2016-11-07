@@ -56,7 +56,32 @@ class ReservationViewSet(viewsets.ModelViewSet):
     serializer_class = ReservationSerializer
 
     def get_queryset(self):
-        return Reservation.objects.none()
+        if not self.request.user.is_authenticated():
+            return Rating.objects.none()
+
+        stores = Store.objects.filter(
+            pk=self.kwargs.get('store_pk')
+        )
+
+        if self.request.user in stores[0].managers.all():
+            reservations = Reservation.objects.filter(
+                service_day__product__store=stores
+            )
+
+        else:
+            reservations = Reservation.objects.filter(
+                service_day__product__store=stores,
+                user=self.request.user
+            )
+
+        return [
+            {
+                'date': r.service_day.date,
+                'user': r.user,
+                'product': r.service_day.product,
+                'demand': r.demand
+            } for r in reservations
+        ]
 
 
 class StoreViewSet(viewsets.ReadOnlyModelViewSet):
