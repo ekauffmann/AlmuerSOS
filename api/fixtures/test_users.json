@@ -4,7 +4,7 @@
         "model": "auth.user",
         "fields": {
             "username": "test_user",
-            "first_name": "Usuario",
+            "first_name": "Manager",
             "last_name": "Prueba",
             "is_active": true,
             "is_superuser": false,
@@ -15,6 +15,24 @@
             "password": "test_user_password",
             "email": "test_user@test_user.com",
             "date_joined": "2014-05-16T04:00:00Z"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.user",
+        "fields": {
+            "username": "test_user2",
+            "first_name": "Cliente",
+            "last_name": "Prueba",
+            "is_active": true,
+            "is_superuser": false,
+            "is_staff": false,
+            "last_login": "2016-05-16T04:00:01Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "test_user2_password",
+            "email": "test_user2@test_user2.com",
+            "date_joined": "2014-05-16T05:00:00Z"
         }
     }
 ]

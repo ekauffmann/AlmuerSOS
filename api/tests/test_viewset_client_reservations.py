@@ -1,10 +1,9 @@
 from django.contrib.auth.models import User
 from django.test import TransactionTestCase
 from rest_framework.test import APIClient
-from ..views import ReservationViewSet
 
 
-class ReservationViewSetTestCase(TransactionTestCase):
+class ClientReservationViewSetTestCase(TransactionTestCase):
     fixtures = [
         'test_users.json',
         'test_stores.json',
@@ -17,10 +16,13 @@ class ReservationViewSetTestCase(TransactionTestCase):
         self.client = APIClient()
 
     def test_list_reservations(self):
-        user = User.objects.get(pk=1)
+        user = User.objects.get(pk=2)
         self.client.force_authenticate(user=user)
 
-        reservations = self.client.get('/0/stores/1/reservations/').json()
+        reservations = self.client.get(
+            '/0/users/{0:d}/reservations/'.format(user.pk)
+        ).json()
 
-        self.assertEqual(1, len(reservations))
-        self.assertEqual('Lunchbox', reservations[0]['product']['name'])
+        self.assertEqual(2, len(reservations))
+        self.assertEqual('Lunchbox', reservations[0]['service_day']['product']['name'])
+        self.assertEqual('Mongoliana', reservations[1]['service_day']['product']['name'])

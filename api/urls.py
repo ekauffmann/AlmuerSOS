@@ -16,7 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from rest_framework_nested import routers
 
-from .views import CommentViewSet, ProductViewSet, RatingViewSet, ReservationViewSet, StoreViewSet
+from .views.comment import CommentViewSet
+from .views.product import ProductViewSet
+from .views.rating import RatingViewSet
+from .views.reservation import ReservationViewSet
+from .views.store import StoreViewSet
+from .views.user import UserViewSet, UserReservationViewSet
 
 
 router = routers.SimpleRouter()
@@ -28,7 +33,12 @@ stores_router.register(r'ratings', RatingViewSet, 'Rating')
 stores_router.register(r'comments', CommentViewSet, 'Comment')
 stores_router.register(r'reservations', ReservationViewSet, 'Reservation')
 
+router.register(r'users', UserViewSet, 'User')
+users_router = routers.NestedSimpleRouter(router, r'users', lookup='user')
+users_router.register(r'reservations', UserReservationViewSet, 'UserReservation')
+
 urlpatterns = [
     url(r'^0/', include(router.urls)),
     url(r'^0/', include(stores_router.urls)),
+    url(r'^0/', include(users_router.urls)),
 ]

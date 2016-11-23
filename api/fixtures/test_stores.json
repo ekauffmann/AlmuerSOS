@@ -5,7 +5,7 @@
         "fields": {
             "name": "Lunchbox Factory",
             "phone": "+56949007852",
-            "managers": [],
+            "managers": [1],
             "payment_methods": [],
             "description": "¡Lunchbox, Gohan y Ensaladaaaas!"
         }

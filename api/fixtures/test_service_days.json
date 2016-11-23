@@ -8,5 +8,15 @@
             "price": 2500,
             "supply": 2
         }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 2,
+        "fields": {
+            "date": "2016-05-16",
+            "product": 5,
+            "price": 2500,
+            "supply": 2
+        }
     }
 ]
