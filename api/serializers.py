@@ -1,3 +1,4 @@
+# coding=utf-8
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
@@ -84,21 +85,6 @@ class ReservationSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('No se puede reservar esa cantidad.')
 
         return demand
-
-    # def create(self, validated_data):
-    #     reservation = Reservation(
-    #         user=validated_data['user'],
-    #         service_day=validated_data['service_day'],
-    #         demand=validated_data['demand'],
-    #     )
-
-    #     reservation.save()
-
-    #     return ReservationSerializer(
-    #         service_day=validated_data['service_day'],
-    #         user=validated_data['user'],
-    #         demand=validated_data['demand'],
-    #     )
 
 
 class StoreSerializer(serializers.ModelSerializer):
