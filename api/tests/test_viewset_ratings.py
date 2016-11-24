@@ -17,3 +17,8 @@ class RatingViewSetTestCase(TransactionTestCase):
 
         self.assertEqual(1, len(ratings))
         self.assertEqual(1, ratings[0]['value'])
+
+    def test_get_rating(self):
+        ratings = self.client.get('/0/stores/1/ratings/1/').json()
+
+        self.assertEqual(1, ratings['value'])

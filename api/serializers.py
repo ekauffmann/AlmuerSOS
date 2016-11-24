@@ -38,6 +38,7 @@ class ServiceDaySerializer(serializers.ModelSerializer):
 
 
 class ReservationSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     service_day = ServiceDaySerializer()
 
     class Meta:
@@ -66,17 +67,15 @@ class ReservationSerializer(serializers.ModelSerializer):
         return service_days[0]
 
     def validate_user(self, user):
-        user = self.initial_data['user']
-
         product = self._get_product()
 
-        users = User.objects.filter(pk=user)
+        users = User.objects.filter(pk=self.initial_data['user']['id'])
 
         if len(users) is not 1:
             raise serializers.ValidationError('El usuario no existe.')
 
         if users[0] in product.store.managers.all():
-            raise serializers.ValidationError('El manager de esta tienda no puede reservar en su propia tiempo.')
+            raise serializers.ValidationError('El manager de esta tienda no puede reservar en su propia tienda.')
 
         return users[0]
 

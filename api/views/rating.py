@@ -9,7 +9,7 @@ class RatingViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         params = {
-            'store': self.kwargs.get('store_pk')
+            'store': self.kwargs['store_pk']
         }
 
         rating_id = self.kwargs.get('pk')

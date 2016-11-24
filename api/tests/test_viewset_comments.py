@@ -17,3 +17,8 @@ class CommentViewSetTestCase(TransactionTestCase):
 
         self.assertEqual(1, len(comments))
         self.assertEqual('Ñe', comments[0]['text'])
+
+    def test_get_comment(self):
+        comments = self.client.get('/0/stores/2/comments/2/').json()
+
+        self.assertEqual('Ñe', comments['text'])

@@ -9,7 +9,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         params = {
-            'store': self.kwargs.get('store_pk')
+            'store': self.kwargs['store_pk']
         }
 
         comment_id = self.kwargs.get('pk')

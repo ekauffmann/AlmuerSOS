@@ -9,7 +9,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         params = {
-            'store': self.kwargs.get('store_pk')
+            'store': self.kwargs['store_pk']
         }
 
         product_id = self.kwargs.get('pk')

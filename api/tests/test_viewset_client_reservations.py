@@ -26,3 +26,7 @@ class ClientReservationViewSetTestCase(TransactionTestCase):
         self.assertEqual(2, len(reservations))
         self.assertEqual('Lunchbox', reservations[0]['service_day']['product']['name'])
         self.assertEqual('Mongoliana', reservations[1]['service_day']['product']['name'])
+
+    def test_list_reservations_bad_user(self):
+        reservations = self.client.get('/0/users/999/reservations/').json()
+        self.assertEqual(0, len(reservations))
