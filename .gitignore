@@ -1,6 +1,8 @@
 .DS_Store
 Thumbs.db
 
+almuersos/settings/local.py
+
 db.sqlite3
 
 *.pyc

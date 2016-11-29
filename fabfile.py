@@ -81,7 +81,7 @@ def prepare_environment():
         sudo('mkdir -p envs logs repos', user=env.deploy_user)
 
         sudo(
-            '[ ! -d pyenv ] && virtualenv -p {0:s} {1:s} || echo "Python environment already exists"'.format(
+            '[ ! -d {1:s} ] && virtualenv -p {0:s} {1:s} || echo "Python environment already exists"'.format(
                 env.python_env_version,
                 env.python_env_path
             ),
@@ -143,13 +143,6 @@ def config_gunicorn():
 
     put('deploy/gunicorn.py', remote_file, use_sudo=True)
 
-    env_vars = sudo(
-        'cat {0:s}'.format(os.path.join(env.home, 'configs', '{0:s}.json'.format(env.name))),
-        user=env.deploy_user
-    )
-
-    env_vars = json.loads(env_vars)
-
     replacements = (
         ('USER_HOME', env.home,),
         ('VIRTUALENV_PATH', env.python_env_path,),
@@ -157,11 +150,19 @@ def config_gunicorn():
         ('PROJECT_PATH', env.git_repo_path,),
         ('GUNICORN_LOG_PATH', env.gunicorn_log_path,),
         ('ENV_NAME', env.name,),
-        ('ENV_VARS', json.dumps(env_vars)),
     )
 
     for replacement in replacements:
         sed(remote_file, '<{0:s}>'.format(replacement[0]), replacement[1], use_sudo=True)
+
+    # Replace environment vars
+    env_vars = sudo(
+        'cat {0:s}'.format(os.path.join(env.home, 'configs', '{0:s}.json'.format(env.name))),
+        user=env.deploy_user
+    )
+    env_vars = json.loads(env_vars)
+
+    sed(remote_file, '<ENV_VARS>', json.dumps(env_vars), use_sudo=True)
 
     sudo('rm /etc/gunicorn.d/*.bak')
 
