@@ -7,7 +7,7 @@ import os
 
 from fabric.api import env, run
 from fabric.colors import yellow
-from fabric.context_managers import cd, shell_env
+from fabric.context_managers import cd, hide, shell_env
 from fabric.contrib.files import sed
 from fabric.operations import local, put, sudo
 
@@ -162,8 +162,9 @@ def config_gunicorn():
     for replacement in replacements:
         sed(remote_file, '<{0:s}>'.format(replacement[0]), replacement[1], use_sudo=True)
 
-    # Replace environment vars
-    sed(remote_file, '<ENV_VARS>', json.dumps(env.server_env_vars), use_sudo=True)
+    with hide('running', 'stdout'):
+        # Replace environment vars
+        sed(remote_file, '<ENV_VARS>', json.dumps(env.server_env_vars), use_sudo=True)
 
     sudo('rm /etc/gunicorn.d/*.bak')
 
@@ -174,10 +175,11 @@ def restart_services():
 
 
 def _get_environ_vars():
-    env_vars = sudo(
-        'cat {0:s}'.format(os.path.join(env.home, 'configs', '{0:s}.json'.format(env.name))),
-        user=env.deploy_user
-    )
+    with hide('running', 'stdout'):
+        env_vars = sudo(
+            'cat {0:s}'.format(os.path.join(env.home, 'configs', '{0:s}.json'.format(env.name))),
+            user=env.deploy_user
+        )
     return json.loads(env_vars)
 
 
