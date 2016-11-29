@@ -8,3 +8,8 @@ test:
     - cp almuersos/settings/local.py{.default,}
   override:
     - ./runtests.sh
+deployment:
+  development:
+    branch: develop
+    commands:
+      - fab development:develop deploy

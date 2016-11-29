@@ -46,6 +46,8 @@ def set_env_vars():
 
 
 def deploy():
+    env.server_env_vars = _get_environ_vars()
+
     install_packages()
     prepare_environment()
     repo_update()
@@ -110,6 +112,10 @@ def repo_activate_version():
             'git checkout {0:s}'.format(env.tag),
             user=env.deploy_user
         )
+        sudo(
+            'git pull'.format(env.tag),
+            user=env.deploy_user
+        )
 
 
 def install_dependencies():
@@ -123,13 +129,14 @@ def django_migrate_db():
         return
 
     print yellow('\nDjango migrate DB')
-    with shell_env(HOME=env.home), cd(env.git_repo_path):
+    with shell_env(HOME=env.home, **env.server_env_vars), cd(env.git_repo_path):
         sudo('{0:s}/bin/python manage.py migrate'.format(env.python_env_path), user=env.deploy_user)
 
 
 def django_collect_static():
     print yellow('\nDjango collect static')
-    with shell_env(HOME=env.home), cd(env.git_repo_path):
+
+    with shell_env(HOME=env.home, **env.server_env_vars), cd(env.git_repo_path):
         sudo(
             '{0:s}/bin/python manage.py collectstatic --noinput'.format(env.python_env_path),
             user=env.deploy_user
@@ -156,13 +163,7 @@ def config_gunicorn():
         sed(remote_file, '<{0:s}>'.format(replacement[0]), replacement[1], use_sudo=True)
 
     # Replace environment vars
-    env_vars = sudo(
-        'cat {0:s}'.format(os.path.join(env.home, 'configs', '{0:s}.json'.format(env.name))),
-        user=env.deploy_user
-    )
-    env_vars = json.loads(env_vars)
-
-    sed(remote_file, '<ENV_VARS>', json.dumps(env_vars), use_sudo=True)
+    sed(remote_file, '<ENV_VARS>', json.dumps(env.server_env_vars), use_sudo=True)
 
     sudo('rm /etc/gunicorn.d/*.bak')
 
@@ -170,6 +171,14 @@ def config_gunicorn():
 def restart_services():
     print(yellow('\nRestarting services'))
     sudo('service gunicorn restart', pty=False)
+
+
+def _get_environ_vars():
+    env_vars = sudo(
+        'cat {0:s}'.format(os.path.join(env.home, 'configs', '{0:s}.json'.format(env.name))),
+        user=env.deploy_user
+    )
+    return json.loads(env_vars)
 
 
 def _install_gunicorn():
