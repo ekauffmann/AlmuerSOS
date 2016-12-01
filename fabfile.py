@@ -20,29 +20,31 @@ def development(tag):
     env.name = 'develop'
     env.hosts = ['develop.almuersos.cl']
     env.deploy_user = 'almuersos-api-dev'
-    env.tag = tag
     env.migrate_db = True
-    set_env_vars()
+    set_env_vars(tag)
 
 
 def production(tag):
     env.name = 'production'
     env.hosts = ['almuersos.cl']
     env.deploy_user = 'almuersos-api-prod'
-    env.tag = tag
     env.migrate_db = True
-    set_env_vars()
+    set_env_vars(tag)
 
 
-def set_env_vars():
+def set_env_vars(tag):
+    env.tag = tag
+    env.tag_clean = re.sub(r'[/\.]', '_', env.tag)
+
     env.user = 'ubuntu'  # User with sudo
     env.home = '/home/{0:s}'.format(env.deploy_user)
+
     env.python_env_version = 'python3'
-    env.python_env_path = os.path.join(env.home, 'envs', env.tag)
+    env.python_env_path = os.path.join(env.home, 'envs', env.tag_clean)
 
     env.git_repo_url = local('git config --get remote.origin.url', capture=True)
-    env.git_repo_path = os.path.join(env.home, 'repos', env.tag)
-    env.gunicorn_log_path = os.path.join(env.home, 'logs', env.tag)
+    env.git_repo_path = os.path.join(env.home, 'repos', env.tag_clean)
+    env.gunicorn_log_path = os.path.join(env.home, 'logs', env.tag_clean)
 
 
 def deploy():
