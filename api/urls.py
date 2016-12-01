@@ -38,7 +38,7 @@ users_router = routers.NestedSimpleRouter(router, r'users', lookup='user')
 users_router.register(r'reservations', UserReservationViewSet, 'UserReservation')
 
 urlpatterns = [
-    url(r'^0/', include(router.urls)),
-    url(r'^0/', include(stores_router.urls)),
-    url(r'^0/', include(users_router.urls)),
+    url(r'', include(router.urls)),
+    url(r'', include(stores_router.urls)),
+    url(r'', include(users_router.urls)),
 ]
