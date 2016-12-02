@@ -11,10 +11,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CORS_ORIGIN_WHITELIST = ()
+CORS_ORIGIN_WHITELIST = ('almuersos.lo:4200',)
 CORS_ALLOW_CREDENTIALS = True
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = ''
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'http://almuersos.lo:4200'
 
 SOCIAL_AUTH_FACEBOOK_KEY = ''
 SOCIAL_AUTH_FACEBOOK_SECRET = ''
@@ -29,6 +29,6 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '..', 'db.sqlite3'),
     }
 }
