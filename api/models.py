@@ -11,9 +11,15 @@ class Store(models.Model):
     payment_methods = models.ManyToManyField('PaymentMethod')
     description = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class PaymentMethod(models.Model):
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
 
 
 class Rating(models.Model):
@@ -41,6 +47,8 @@ class Product(models.Model):
     name = models.CharField(max_length=128)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
 class ServiceDay(models.Model):
     date = models.DateField()
