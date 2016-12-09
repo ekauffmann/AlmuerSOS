@@ -46,9 +46,11 @@ class Comment(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=128)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    description = models.TextField(default=None, null=True)
 
     def __str__(self):
         return self.name
+
 
 class ServiceDay(models.Model):
     date = models.DateField()
