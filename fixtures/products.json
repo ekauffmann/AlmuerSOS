@@ -1,0 +1,46 @@
+[
+  {
+    "model": "api.product",
+    "pk": 1,
+    "fields": {
+      "name": "Lunchbox",
+      "store": 1,
+      "description": "Tallarines al pesto, pollo apanado, queso philadelphia y ceboll\u00edn. Incluye salsa agridulce."
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 2,
+    "fields": {
+      "name": "Gohan",
+      "store": 1,
+      "description": "Arroz blanco con pollo apanado y pepino rallado. Incluye salsa agridulce y de ajo."}
+  },
+  {
+    "model": "api.product",
+    "pk": 3,
+    "fields": {
+      "name": "Ensalada",
+      "store": 1,
+      "description": "Ensalada de lechuga, tomate, choclo acompa\u00f1ada de pollo apanado y un poco de gohan. Incluye salsa agridulce y de ajo."
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 4,
+    "fields": {
+      "name": "Vegetariano",
+      "store": 1,
+      "description": "TBD"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 5,
+    "fields": {
+      "name": "Pastel de cochayuyo",
+      "store": 2,
+      "description": "Delicioso y nutritivo"
+    }
+  }
+]
