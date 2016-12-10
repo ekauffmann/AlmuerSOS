@@ -19,6 +19,19 @@ INSTALLED_APPS = [
     'api',
 ]
 
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'x-xsrf-token',
+)
+
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
 
 REST_FRAMEWORK = {

@@ -1,0 +1,16 @@
+[
+  {
+    "model": "api.paymentmethod",
+    "pk": 1,
+    "fields": {
+      "name": "Efectivo"
+    }
+  },
+  {
+    "model": "api.paymentmethod",
+    "pk": 2,
+    "fields": {
+      "name": "Redcompra"
+    }
+  }
+]

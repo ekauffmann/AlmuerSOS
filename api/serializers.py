@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Comment, Product, Rating, Reservation, ServiceDay, Store
+from .models import Comment, PaymentMethod, Product, Rating, Reservation, ServiceDay, Store
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -11,10 +11,16 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ('id', 'store', 'user', 'date', 'text',)
 
 
+class PaymentMethodSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PaymentMethod
+        fields = ('id', 'name',)
+
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('id', 'name',)
+        fields = ('id', 'name', 'description')
 
 
 class RatingSerializer(serializers.ModelSerializer):
@@ -87,6 +93,9 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 
 class StoreSerializer(serializers.ModelSerializer):
+    managers = UserSerializer(many=True)
+    payment_methods = PaymentMethodSerializer(many=True)
+
     class Meta:
         model = Store
         fields = ('id', 'name', 'phone', 'managers', 'payment_methods', 'description',)
