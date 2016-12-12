@@ -1,0 +1,152 @@
+[
+    {
+        "model": "api.serviceday",
+        "pk": 1,
+        "fields": {
+            "date": "2016-12-14",
+            "product": 1,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 2,
+        "fields": {
+            "date": "2016-12-14",
+            "product": 2,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 3,
+        "fields": {
+            "date": "2016-12-14",
+            "product": 3,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 4,
+        "fields": {
+            "date": "2016-12-14",
+            "product": 4,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 5,
+        "fields": {
+            "date": "2016-12-14",
+            "product": 5,
+            "price": 2300,
+            "supply": 20
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 6,
+        "fields": {
+            "date": "2016-12-15",
+            "product": 1,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 7,
+        "fields": {
+            "date": "2016-12-15",
+            "product": 2,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 7,
+        "fields": {
+            "date": "2016-12-15",
+            "product": 3,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 8,
+        "fields": {
+            "date": "2016-12-15",
+            "product": 4,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 9,
+        "fields": {
+            "date": "2016-12-15",
+            "product": 5,
+            "price": 2300,
+            "supply": 20
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 10,
+        "fields": {
+            "date": "2016-12-16",
+            "product": 1,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 11,
+        "fields": {
+            "date": "2016-12-16",
+            "product": 2,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 12,
+        "fields": {
+            "date": "2016-12-16",
+            "product": 3,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 13,
+        "fields": {
+            "date": "2016-12-16",
+            "product": 4,
+            "price": 2500,
+            "supply": 30
+        }
+    },
+    {
+        "model": "api.serviceday",
+        "pk": 14,
+        "fields": {
+            "date": "2016-12-16",
+            "product": 5,
+            "price": 2300,
+            "supply": 20
+        }
+    }
+]

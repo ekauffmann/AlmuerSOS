@@ -20,6 +20,7 @@ from .views.comment import CommentViewSet
 from .views.product import ProductViewSet
 from .views.rating import RatingViewSet
 from .views.reservation import ReservationViewSet
+from .views.service_day import ServiceDayViewSet
 from .views.store import StoreViewSet
 from .views.user import UserReservationViewSet, UserViewSet, UserSessionViewSet
 
@@ -32,6 +33,7 @@ stores_router.register(r'products', ProductViewSet, 'Product')
 stores_router.register(r'ratings', RatingViewSet, 'Rating')
 stores_router.register(r'comments', CommentViewSet, 'Comment')
 stores_router.register(r'reservations', ReservationViewSet, 'Reservation')
+stores_router.register(r'service_days', ServiceDayViewSet, 'ServiceDay')
 
 router.register(r'users', UserViewSet, 'User')
 users_router = routers.NestedSimpleRouter(router, r'users', lookup='user')
