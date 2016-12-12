@@ -12,7 +12,7 @@
     "model": "api.product",
     "pk": 2,
     "fields": {
-      "name": "Gohan",
+      "name": "Gohan de Pollo",
       "store": 1,
       "description": "Arroz blanco con pollo apanado y pepino rallado. Incluye salsa agridulce y de ajo."}
   },
@@ -20,7 +20,7 @@
     "model": "api.product",
     "pk": 3,
     "fields": {
-      "name": "Ensalada",
+      "name": "Ensalada de Pollo",
       "store": 1,
       "description": "Ensalada de lechuga, tomate, choclo acompa\u00f1ada de pollo apanado y un poco de gohan. Incluye salsa agridulce y de ajo."
     }

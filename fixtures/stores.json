@@ -5,7 +5,7 @@
     "fields": {
       "name": "Lunchbox Factory",
       "phone": "+56912345678",
-      "description": "Colaciones estilo japon\u00e9s. Hay opci\u00f3n vegetariana. Todas incluyen postre, cubiertos (palillos o tenedor) y servilleta. Se puede pagar con efectivo o Redcompra. Disponible de lunes a viernes de 12:30 a 14:00.",
+      "description": "Colaciones estilo japon\u00e9s. Hay opci\u00f3n vegetariana. Todas incluyen postre, cubiertos (palillos o tenedor) y servilleta. Se puede pagar con efectivo o Redcompra. Disponible de lunes a viernes de 12:30 a 13:30. Se reciben pedidos hasta las 12:00 hrs.",
       "managers": [],
       "payment_methods": [1, 2]
     }
@@ -16,7 +16,7 @@
     "fields": {
       "name": "T\u00eda Vegana",
       "phone": "+56912345678",
-      "description": "Colaci\u00f3n org\u00e1nica vegetariana y vegana. Incluye ensalada, postre y cubiertos. Viene en bolsas reciclables. Disponible de lunes a viernes de 13:00 a 14:00.",
+      "description": "Colaci\u00f3n org\u00e1nica vegetariana y vegana. Incluye ensalada, frutag y cubiertos. Viene en bolsas reciclables. Disponible de lunes a viernes de 13:00 a 14:00.",
       "managers": [],
       "payment_methods": [1]
     }
