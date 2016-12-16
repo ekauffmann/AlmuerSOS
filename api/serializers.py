@@ -93,8 +93,8 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 
 class StoreSerializer(serializers.ModelSerializer):
-    managers = UserSerializer(many=True)
-    payment_methods = PaymentMethodSerializer(many=True)
+    managers = UserSerializer(many=True, read_only=True)
+    payment_methods = PaymentMethodSerializer(many=True, read_only=True)
 
     class Meta:
         model = Store
