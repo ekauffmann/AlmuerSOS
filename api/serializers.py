@@ -1,8 +1,9 @@
 # coding=utf-8
 from django.contrib.auth.models import User
+from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 
-from .models import Comment, PaymentMethod, Product, Rating, Reservation, ServiceDay, Store
+from .models import Comment, PaymentMethod, Product, Rating, Reservation, ServiceDay, Store, StoreImage
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -99,3 +100,16 @@ class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
         fields = ('id', 'name', 'phone', 'managers', 'payment_methods', 'description',)
+
+
+class StoreImageSerializer(serializers.ModelSerializer):
+
+    file = Base64ImageField()
+
+    class Meta:
+        model = StoreImage
+        fields = ('id', 'store', 'file',)
+
+    def create(self, validated_data):
+        StoreImage.objects.filter(store=validated_data['store']).delete()
+        return StoreImage.objects.create(**validated_data)

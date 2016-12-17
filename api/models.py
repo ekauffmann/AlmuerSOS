@@ -65,3 +65,9 @@ class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     service_day = models.ForeignKey(ServiceDay, on_delete=models.CASCADE)
     demand = models.IntegerField()
+
+
+class StoreImage(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    file = models.ImageField(upload_to='images_store', max_length=254)
